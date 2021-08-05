@@ -1,0 +1,181 @@
+{% extends 'shop/basic.html' %}
+
+{% block title %} About - NV Fashion {% endblock %}
+
+{% block css %}
+
+    <!--    for w3shool code-->
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0;
+    }
+
+    html {
+        box-sizing: border-box;
+    }
+
+    *, *:before, *:after {
+        box-sizing: inherit;
+    }
+
+    .column {
+        float: left;
+        width: 33.3%;
+        margin-bottom: 16px;
+        padding: 0 8px;
+    }
+
+    .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        margin: 8px;
+    }
+
+    .about-section {
+        padding: 50px;
+        text-align: center;
+        background-color: #f3f0f0;
+        color: rgb(38, 52, 63);
+    }
+
+    .container {
+        padding: 0 16px;
+    }
+
+    .container::after, .row::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+    .title {
+        color: grey;
+    }
+
+    .button {
+        border: none;
+        outline: 0;
+        display: inline-block;
+        padding: 8px;
+        color: white;
+        background-color: #000;
+        text-align: center;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    .button:hover {
+        background-color: #555;
+    }
+
+    @media screen and (max-width: 650px) {
+        .column {
+            width: 100%;
+            display: block;
+        }
+    }
+
+{% endblock %}
+
+{% block body %}
+<!--  w3school code for about us -->
+<div class="about-section">
+    <h1 style="font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">NV Fashion</h1>
+    <p style="font-family: Freestyle Script; font-size: 40px;">NV Fashion working since 2019. Fashion is
+        self-expression. It is a way to express your personality and mood. Fashion is also a living, breathing
+        ever-changing urban art-form and is unique in its context to time and place.</p>
+    <p style="font-family: Freestyle Script; font-size: 40px;">New Vision of Lifestyle India's Best Online Shop New
+        Trendy Fashion with Branded Products 100% Quality Checked Shipping - All India Shipping Charge - Free Easy and
+        free Return No Questions asked Return within 5 Days of Delivery Payment COD.</p>
+    <p style="font-family: Freestyle Script; font-size: 43px;"> “To be Earth’s most customer-centric company, where
+        customers can find and discover anything they might want to buy online, and endeavors to offer its customers the
+        lowest possible prices.”</p>
+    <b>
+        <h2>
+            <p>
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-images"
+                     viewBox="0 0 16 16">
+                    <path d="M4.502 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+                    <path d="M14.002 13a2 2 0 0 1-2 2h-10a2 2 0 0 1-2-2V5A2 2 0 0 1 2 3a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v8a2 2 0 0 1-1.998 2zM14 2H4a1 1 0 0 0-1 1h9.002a2 2 0 0 1 2 2v7A1 1 0 0 0 15 11V3a1 1 0 0 0-1-1zM2.002 4a1 1 0 0 0-1 1v8l2.646-2.354a.5.5 0 0 1 .63-.062l2.66 1.773 3.71-3.71a.5.5 0 0 1 .577-.094l1.777 1.947V5a1 1 0 0 0-1-1h-10z"/>
+                </svg>
+                <a href="/shop/gallary"
+                   style="color:rgb(38, 52, 63); font-family: Old English Text MT; font-weight: bold;"> Our Gallary </a>
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                     class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
+                    <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+                </svg>
+            </p>
+        </h2>
+    </b>
+</div>
+<!-- video control -->
+<!-- <center>
+<video controls height="550" >
+  <source src="\media\shop\video\v3.mp4" type="video/mp4">
+</video></center> -->
+<!-- video end -->
+<h1 style="text-align:center; font-family:Georgia, 'Times New Roman', Times, serif; background-color: lightgrey">Our
+    Team</h1>
+<center>
+    <div class="row bg-dark mx-auto">
+        <div class="column">
+            <div class="card" style="width: 78%">
+                <img src="/media/shop/about/n2.jpg" alt="niki" style="width:100%" height="350">
+                <div class="container">
+                    <h2>Patel Niki</h2>
+                    <p class="title">CEO & Founder</p>
+                    <!-- <p>I am CEO & Founder of NV Fashion. I do my best for customer satisfaction.</p> -->
+                    <p>niki@nvfashion.com</p>
+                    <p>
+                        <button class="button">Contact</button>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="card" style="width: 78%">
+                <img src="/media/shop/about/vipul.jpg" alt="vipul" style="width:100%" height="350">
+                <div class="container">
+                    <h2>Patel Vipul</h2>
+                    <p class="title">Art Director</p>
+                    <!-- <p>Patel Vipul is Art Director. He work for NV fashion with loyalty.</p> -->
+                    <p>vipul@nvfashion.com</p>
+                    <p>
+                        <button class="button">Contact</button>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="card" style="width: 78%">
+                <img src="/media/shop/about/nita.jpg" alt="nita" style="width:100%" height="350">
+                <div class="container">
+                    <h2>Patel Nita</h2>
+                    <p class="title">Designer</p>
+                    <!-- <p>Patel Nita is our Designer. She is very hardworking. She Designs best for NV Fashion.</p> -->
+                    <p>nita@nvfashion.com</p>
+                    <p>
+                        <button class="button">Contact</button>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</center>
+<!--    map for site-->
+<p></p>
+<h2 style="text-align:center">Visit
+    <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" fill="currentColor" class="bi bi-geo-alt-fill"
+         viewBox="0 0 16 16">
+        <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+    </svg>
+    Here
+</h2>
+<p align="center">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3672.284814841026!2d71.17723981428222!3d23.013312422450518!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395a2bc898808eb5%3A0x9e705319514c8a11!2sNV%20Fashion!5e0!3m2!1sen!2sin!4v1613625425198!5m2!1sen!2sin"
+            width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false"
+            tabindex="0">
+    </iframe>
+</p>
+{% endblock %}

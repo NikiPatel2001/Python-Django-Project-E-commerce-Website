@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <title>{% block title %} {% endblock %}</title>
+    <style>
+        {% block css %} {% endblock %}
+    </style>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v7.0" nonce="BazGGbAR"></script>
+  </head>
+  <body>
+  {% load static%}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="/shop"><b>NV Fashion </b><h6>Fashion by You</h6></a>
+<!--      <a class="navbar-brand" href="/shop">NV Fashion </a>-->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/shop"><h3>Home</h3> <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/shop/about"><h3>About Us</h3></a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/shop/tracker"><h3>Tracker</h3></a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/blog"><h3>Blog</h3></a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/shop/contact"><h3>Contact Us</h3></a>
+          </li>
+
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        <button id="cart_btn" type="button" class="btn btn-secondary mx-2">Cart(<span id="cart">0</span>)</button>
+        <div type="button" class="btn btn-secondary mx-2" id="popcart" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content=""></div>
+      </div>
+    </nav>
+
+    {% block body %} {% endblock %}
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    {% block js %} {% endblock %}
+
+      <!-- Footer For All Pages
+		<table  width="100%"height="100" style="margin-left:0;background-color:lightgray">
+
+
+			<tr>
+			<td><h3  align="center" color="black" style="color:black;" >Designed & Developed By:- Patel Niki
+			</h3>
+
+              <h5 color="black" align="center" style="color:;">&copy;All Rights Reserved 2020-21 By <b>NV Fashion</b>
+			</h5>
+			</td></tr>
+        </table>-->
+  </body>
+</html>

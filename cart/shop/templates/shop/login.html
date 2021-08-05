@@ -1,0 +1,45 @@
+{% extends 'shop/basic.html' %}
+
+{% block title %} Login - NV Fashion {% endblock %}
+
+{% block body %}
+<div class="container" style="background: linear-gradient(to right,#685858, #b9a9b6);">
+    <div class="p-4 m-4">
+        <div class="col-lg-4 mt-4 mb-4 mx-auto">
+            <h1 class="heading pb-4"
+                style="font-family:Georgia, 'Times New Roman', Times, serif; font-weight: bold; text-align: center;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="90" height="100" fill="currentColor"
+                     class="bi bi-person-circle" viewBox="0 0 16 16">
+                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                    <path fill-rule="evenodd"
+                          d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                </svg>
+            </h1>
+            <form method="post" action="/shop/login/">{% csrf_token %}
+
+                {% if error %}
+                <div class="alert alert-danger" role="alert">
+                    {{error}}
+                </div>
+                {% endif %}
+                <!--                     ********** Email *********-->
+                <div class="form-group">
+                    <label for=""><h5>Email</h5></label>
+                    <input type="email" id="" value="{{values.email}}" name="email" class="form-control"
+                           placeholder="example@gmail.com">
+                </div>
+                <!--                     ********** Password *********-->
+                <div class="form-group">
+                    <label for=""><h5>Password</h5></label>
+                    <input type="password" id="" name="password" class="form-control" placeholder="********">
+                </div>
+
+                <div class="form-group pt-3">
+                    <input type="submit" class="btn btn-light" value="Login" style="
+                        font-size: large; font-weight: bold; border-radius: 50px; width: 50%;">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

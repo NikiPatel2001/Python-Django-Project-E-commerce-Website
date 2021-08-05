@@ -1,0 +1,92 @@
+{% extends 'shop/basic.html' %}
+
+{% block title %} Our Gallary - NV Fashion {% endblock %}
+
+{% block css %}
+  .row {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 0 4px;
+      width: 1349px;
+  }
+
+  /* Create four equal columns that sits next to each other */
+  .column {
+      flex: 25%;
+      max-width: 25%;
+      padding: 0 4px;
+  }
+
+  .column img {
+      margin-top: 8px;
+      vertical-align: middle;
+      width: 100%;
+  }
+
+  /* Responsive layout - makes a two column-layout instead of four columns */
+  @media screen and (max-width: 800px) {
+    .column {
+        flex: 50%;
+        max-width: 50%;
+    }
+  }
+
+  /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 600px) {
+    .column {
+        flex: 100%;
+        max-width: 100%;
+    }
+  }
+{% endblock %}
+
+{% block body %}
+<div class="my-3">
+    <img src="\media\shop\products\a1.jpg" width="1350px;">
+    <!-- <center><h1 class="my-2" style="font-family: inherit; color: gray;background: lightgray">Our Top Brands Collection Present Here</h1></center> -->
+</div>
+<div class="row">
+    <div class="column">
+        <img src="\media\shop\products\fp3.jpg">
+        <img src="\media\shop\products\mp2.jpg">
+        <img src="\media\shop\products\fp7.jpg">
+        <img src="\media\shop\products\mp1.jpg">
+        <img src="\media\shop\products\fp4.jpg">
+        <img src="\media\shop\products\fp6.jpg">
+        <img src="\media\shop\products\m8.jpg">
+        <img src="\media\shop\products\n1.jpg">
+    </div>
+    <div class="column">
+        <img src="\media\shop\products\m6.jpg">
+        <img src="\media\shop\products\mw3.jpg">
+        <img src="\media\shop\products\w10.jpg">
+        <img src="\media\shop\products\fp2.jpg">
+        <img src="\media\shop\products\fw6.jpg">
+        <img src="\media\shop\products\mw5.jpg">
+        <img src="\media\shop\products\n2.jpg">
+        <img src="\media\shop\products\mp3.jpg">
+    </div>
+    <div class="column">
+        <img src="\media\shop\products\fw5.jpg">
+        <img src="\media\shop\products\e2.jpg">
+        <img src="\media\shop\offers\o6.jpg">
+        <img src="\media\shop\offers\o1.jpg">
+        <img src="\media\shop\offers\o9.jpg">
+        <img src="\media\shop\offers\o3.jpg">
+        <img src="\media\shop\products\m7.jpg">
+        <img src="\media\shop\products\n3.jpg">
+        <img src="\media\shop\products\w6.jpg">
+    </div>
+    <div class="column">
+        <img src="\media\shop\products\m1.jpg">
+        <img src="\media\shop\products\w5.jpg">
+        <img src="\media\shop\products\w8.jpg">
+        <img src="\media\shop\products\w4.jpg">
+        <img src="\media\shop\products\m3.jpg">
+        <img src="\media\shop\products\w7.jpg">
+        <img src="\media\shop\products\n5.jpg">
+        <img src="\media\shop\products\m4.jpg">
+        <img src="\media\shop\products\fp5.jpg">
+    </div>
+</div>
+{% endblock %}

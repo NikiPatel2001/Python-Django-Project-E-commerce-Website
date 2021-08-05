@@ -1,0 +1,525 @@
+{% extends 'shop/basic.html' %}
+{% block title %} NV Fashion {% endblock %}
+{% block css %}
+    .col-md-3{
+        display: inline-block;
+        margin-left:-4px;
+    }
+    .carousel-indicators .active{
+        background-color: black;
+    }
+
+    .col-md-3 img{
+        width: 140px;
+        height: 200px;
+    }
+
+    body .carousel-indicator li{
+        background-color: black;
+    }
+    body .carousel-indicators{
+        bottom:-40px;
+    }
+    .carousel-indicators li{
+        background-color:#7270fc;
+    }
+    body .carousel-control-prev-icon,
+    body .carousel-control-next-icon{
+        background-color: blue;
+    }
+
+    .carousel-control-next,
+    .carousel-control-prev{
+        top:auto;
+        bottom:auto;
+        padding-top:212px;
+    }
+
+    body .carousel-control-prev-icon,
+    body .carousel-control-next-icon{
+        background-color: black;
+    }
+
+    body .no-padding{
+        padding-left:0;
+        padding-right:0;
+
+    }
+    #popcart
+    {
+        position:absolute;
+        top:100%;
+        right:0;
+        z-index:10;
+        visibility:hidden;
+        transition:5s;
+    }
+    #cart_btn:hover ~ #popcart, #popcart:hover ~ #popcart
+    {
+        visibility:visible;
+        transition:5s;
+    }
+
+    <!-- start slideshow nv fashion css -->
+
+    <!-- /* Slideshow container */ -->
+    .slideshow-container {
+        max-width: 1000px;
+        position: relative;
+        margin: auto;
+    }
+
+    <!--         /* Hide the images by default */-->
+    <!--        .mySlides {-->
+    <!--          display: none;-->
+    <!--        }-->
+
+    <!-- /* Fading animation */ -->
+
+    .fade {
+        -webkit-animation-name: fade;
+        -webkit-animation-duration: 3.0s;
+        animation-name: fade;
+        animation-duration:3.0s;
+    }
+
+
+    @-webkit-keyframes fade {
+        from {opacity: .4}
+        to {opacity: 1}
+    }
+
+    @keyframes fade {
+        from {opacity: .4}
+        to {opacity: 1}
+    }
+    <!-- end css for nv fashion slideshow -->
+
+    <!-- **** offer images css -->
+
+    *{
+        margin : 0;
+        padding: 0;
+    }
+    .center{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .main{
+        width: 100%;
+        height: 65vh;
+    <!-- background: black; -->
+    }
+
+    .box{
+        width: 350px;
+        height: 350px;
+        position: relative;
+        cursor: pointer;
+        margin: 20px;
+        overflow: hidden;
+    }
+
+    .box img{
+        width: 100%;
+        height: 100%;
+        transition: all .5s;
+    }
+    .content{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        width: 300px;
+        height: 300px;
+        background: rgba(255,255,255,0.5);
+        flex-direction: column;
+        color: black;
+        clip-path: circle(0% at 50% 50%);
+        transition: all .5s;
+    }
+    .box:hover .content{
+        clip-path: circle(100% at 50% 50%);
+    }
+    .box:hover img{
+        filter: blur(10px);
+        transform: scale(1.1);
+    }
+    .content p{
+        margin: 10px 0 0 15px;
+    }
+
+    <!-- **** end offer images css -->
+
+{% endblock %}
+
+{% block body %}
+<!--   ********** slideshow for NV Fashion  -->
+<!-- Slideshow container -->
+<div class="slideshow-container my-3">
+
+    <!-- Full-width images with number and caption text -->
+    <div class="mySlides fade">
+        <img src="\media\shop\slide\s4.jpg" style="width:100%; height:300px;">
+    </div>
+
+    <div class="mySlides fade">
+        <img src="\media\shop\slide\s7.jpg" style="width:100%; height:300px;">
+    </div>
+
+    <div class="mySlides fade">
+        <img src="\media\shop\slide\s2.jpg" style="width:100%; height:300px;">
+    </div>
+
+    <div class="mySlides fade">
+        <img src="\media\shop\products\s1.jpg" style="width:100%; height:300px;">
+    </div>
+    <div class="mySlides fade">
+        <img src="\media\shop\slide\s21.jpg" style="width:100%; height:300px;">
+    </div>
+    <div class="mySlides fade">
+        <img src="\media\shop\slide\s14.jpg" style="width:100%; height:300px;">
+    </div>
+</div>
+<br>
+<!-- ********** end slideshow ********* -->
+{% load static%}
+<div class="container">
+    <!------------- slideshow start here -------------->
+    {% for product, range, nSlides in allprods %}
+    <b><h3 class="my-4">Flash sale on {{product.0.category}} - Recommended Items</h3></b>
+    <div class="row">
+        <div id="demo{{forloop.counter}}" class="col carousel slide my-3" data-ride="carousel">
+            <ul class="carousel-indicators">
+                <li data-target="#demo{{forloop.counter}}" data-slide-to="0" class="active"></li>
+
+                {% for i in range %}
+                <li data-target="#demo{{forloop.parentloop.counter}}" data-slide-to="{{i}}"></li>
+                {% endfor %}
+            </ul>
+
+
+            <div class="container carousel-inner no-padding">
+                <div class="carousel-item active">
+
+                    {% for i in product %}
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                        <div class="card align-items-center" style="width: 18rem;">
+                            <img src="/media/{{i.image}}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title" id="namepr{{i.id}}">{{i.product_name}}</h5>
+                                <p class="card-text">{{i.desc|slice:"0:25"}}...</p>
+                                <h5 class="card-title" id="pricepr{{i.id}}">{{i.price}}</h5>
+                                <span id="divpr{{i.id}}" class="divpr">
+                                  <button id="pr{{i.id}}" class="btn btn-dark cart">Add To Cart</button>
+                                </span>
+                                <a href="/shop/products/{{i.id}}">
+                                    <button id="qv{{i.id}}" class="btn btn-dark cart">Quick View</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    {% if forloop.counter|divisibleby:4 and forloop.counter > 0 and not forloop.last %}
+                </div>
+                <div class="carousel-item">
+                    {% endif %}
+
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <!-- left and right controls for the slide -->
+        <a class="carousel-control-prev" href="#demo{{forloop.counter}}" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+
+        <a class="carousel-control-next" href="#demo{{forloop.counter}}" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+    </div>
+    {% endfor %}
+</div>
+
+<!--    image show of content   -->
+
+<div class="main center my-3">
+    <div class="box">
+        <img src="\media\shop\offers\o5.jpg">
+        <div class="content center">
+            <h1>HEELS</h1>
+            <p>Heels Under ₹599. There is also 30% OFF on top Brands of Heels like Bata, Lakhani, GUCCI,
+                Tomi-Highflier. </p>
+        </div>
+    </div>
+
+    <div class="box">
+        <img src="\media\shop\offers\o6.jpg">
+        <div class="content center">
+            <h1>PUMA SHOE</h1>
+            <p>Maximum 40% OFF on PUMA Shoes for Men & Women.</p>
+        </div>
+    </div>
+
+    <div class="box">
+        <img src="\media\shop\offers\o8.jpg">
+        <div class="content center">
+            <h1>FASTRACK</h1>
+            <p>Minimum 20% OFF on Fastrack Watch for Men.</p>
+            <p>Minimum 25% OFF on Your First Order</p>
+        </div>
+    </div>
+</div>
+
+<!-- new slide container from my code
+<div class="slideshow-container" >
+    <img src="\media\shop\slide\s21.jpg" style="width:100%;height:300px;">
+</div>
+<br>-->
+<!-- end this my code here -->
+<!-- video control -->
+<div class="row mx-auto">
+    <div class="column col-mg-6">
+        <video controls height="350" style="margin-left: 30px;">
+            <source src="\media\shop\video\v2.mp4" type="video/mp4">
+        </video>
+    </div>
+    <div class="column col-mg-6">
+        <video controls height="350" style="margin-left: 40px;">
+            <source src="\media\shop\video\v1.mp4" type="video/mp4">
+        </video>
+    </div>
+</div>
+<!-- end here -->
+
+<div class="main center">
+    <div class="box">
+        <img src="\media\shop\offers\o1.jpg">
+        <div class="content center">
+            <h1>TITAN</h1>
+            <p>Latest TITAN Model Available With Minimum 15% discount. Grab it Now.</p>
+        </div>
+    </div>
+
+    <div class="box">
+        <!-- <img src="\media\shop\offers\o2.jpg"> -->
+        <video controls height="340" style="margin-left: 40px;">
+            <source src="\media\shop\video\v4.mp4" type="video/mp4">
+        </video>
+        <!-- <div class="content center">
+            <h1>JEANS</h1>
+            <p>On Men's Jeans there is 60% OFF on Regular Brands & 40% OFF on Top Brands.</p>
+        </div> -->
+    </div>
+
+    <div class="box">
+        <img src="\media\shop\offers\o3.jpg">
+        <div class="content center">
+            <h1>SNEAKERS</h1>
+            <p>Sneakers under ₹499.</p>
+            <p> Available till 10th March</p>
+        </div>
+    </div>
+</div>
+
+<div class="slideshow-container">
+    <img src="\media\shop\slide\s20.jpg" style="width:100%;height:300px;">
+</div>
+
+<div class="main center">
+    <div class="box">
+        <img src="\media\shop\products\fp2.jpg">
+        <div class="content center">
+            <h1>VAN HEUSEN</h1>
+            <!-- <p>dsz.ivu cnaizudbv baleuvb awbclauu</p> -->
+        </div>
+    </div>
+
+    <div class="box">
+        <img src="\media\shop\products\mp4.jpg">
+        <div class="content center">
+            <h1>WRANGLER</h1>
+            <!-- <p>dsz.ivu cnaizudbv baleuvb awbclauu</p> -->
+        </div>
+    </div>
+
+    <div class="box">
+        <img src="\media\shop\products\mp2.jpg">
+        <div class="content center">
+            <h1>BLACKBERRYS</h1>
+            <!-- <p>dsz.ivu cnaizudbv baleuvb awbclauu</p> -->
+        </div>
+    </div>
+
+    <div class="box">
+        <img src="\media\shop\products\fp3.jpg">
+        <div class="content center">
+            <h1>BIBA</h1>
+            <!-- <p>dsz.ivu cnaizudbv baleuvb awbclauu</p> -->
+        </div>
+    </div>
+</div>
+
+<div class="main center">
+    <div class="box">
+        <img src="\media\shop\products\fw3.jpg">
+        <div class="content center">
+            <h1>MICHEAL KORS</h1>
+            <!-- <p>dsz.ivu cnaizudbv baleuvb awbclauu</p> -->
+        </div>
+    </div>
+
+    <div class="box">
+        <img src="\media\shop\products\mw1.jpg">
+        <div class="content center">
+            <h1>CASIO</h1>
+            <!-- <p>dsz.ivu cnaizudbv baleuvb awbclauu</p> -->
+        </div>
+    </div>
+
+    <div class="box">
+        <img src="\media\shop\products\fw2.jpg">
+        <div class="content center">
+            <h1>TITAN</h1>
+            <!-- <p>dsz.ivu cnaizudbv baleuvb awbclauu</p> -->
+        </div>
+    </div>
+
+    <div class="box">
+        <img src="\media\shop\products\mw4.jpg">
+        <div class="content center">
+            <h1>HUGO BOSS</h1>
+            <!-- <p>dsz.ivu cnaizudbv baleuvb awbclauu</p> -->
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block js %}
+<script>
+    // Find out the cart items from localStorage
+    if (localStorage.getItem('cart') == null)
+    {
+        var cart = {};
+    }
+    else
+    {
+        cart = JSON.parse(localStorage.getItem('cart'));
+        updateCart(cart);
+    }
+    // If the add to cart button is clicked, add/increment the item
+    //$('.cart').click(function() {
+    $('.divpr').on('click', 'button.cart', function(){
+        var idstr = this.id.toString();
+
+        if (cart[idstr] != undefined)
+        {
+            qty = cart[idstr][0] + 1;  
+        }
+        else
+        {
+            qty = 1;
+            name = document.getElementById('name'+idstr).innerHTML;
+            price1 = document.getElementById('price'+idstr).innerHTML;
+            cart[idstr] = [qty, name, parseInt(price1)];
+        }
+        updateCart(cart);
+    });
+    //Add Popover to cart
+    $('#popcart').popover();
+    updatePopover(cart);
+    function updatePopover(cart)
+    {
+        //console.log('we are inside updatePopover');
+        var popStr = "";
+        popStr = popStr + "<h5>Cart for your items in NV Fashion</h5><div class='mx-2 my-2'>";
+        
+        var i = 1;
+        for(var item in cart)
+        {
+            popStr = popStr + "<b>" + i + "</b>. ";
+            popStr = popStr + document.getElementById('name' + item).innerHTML.slice(0,18) + "... Qty: " + cart[item][0] + '<br>';
+            i = i + 1;
+        }
+        
+        popStr = popStr + "<button onclick='clearCart();'> ClearCart </button><a href='/shop/checkout'><button> Checkout </button></a> ";
+        document.getElementById('popcart').innerHTML=popStr;
+        
+        //document.getElementById('popcart').setAttribute('data-content', popStr);
+        //$('#popcart').popover('show');
+    
+    }
+       
+    function clearCart()
+    {
+        cart = JSON.parse(localStorage.getItem('cart'));
+        for(var item in cart)
+        {
+            document.getElementById('div' + item).innerHTML = '<button id="' + item + '" class="btn btn-primary cart">Add To Cart</button>';
+        }
+
+        localStorage.clear();
+        cart = {};
+        updateCart(cart);
+        
+    }
+    function updateCart(cart)
+    {
+        var sum = 0;
+        for (var item in cart)
+        {
+            sum = sum + cart[item][0];
+            document.getElementById('div' + item).innerHTML = "<button id='minus" + item + "' class='btn btn-dark minus'>-</button> <span id='val" + item + "''>" + cart[item][0] + "</span> <button id='plus" + item + "' class='btn btn-dark plus'> + </button>";
+        }
+        localStorage.setItem('cart', JSON.stringify(cart));
+        document.getElementById('cart').innerHTML = sum;
+        console.log(cart);
+        updatePopover(cart);
+    }
+    // If plus or minus button is clicked, change the cart as well as the display value
+    $('.divpr').on("click", "button.minus", function() {
+        a = this.id.slice(7, );
+        cart['pr' + a][0] = cart['pr' + a][0] - 1;
+        cart['pr' + a][0] = Math.max(0, cart['pr' + a][0]);
+        document.getElementById('valpr' + a).innerHTML = cart['pr' + a][0];
+        if(cart['pr' +a][0] == 0)
+        {
+            document.getElementById('divpr' + a).innerHTML = '<button id="pr'+a+'" class="btn btn-dark cart"> Add To Cart </button>';
+            delete cart['pr' +a];
+        }
+        else
+        {
+            document.getElementById('valpr' +a).innerHTML = cart['pr' +a][0];
+        }
+        updateCart(cart);
+    });
+    $('.divpr').on("click", "button.plus", function() {
+        a = this.id.slice(6, );
+        cart['pr' + a][0] = cart['pr' + a][0] + 1;
+        document.getElementById('valpr' + a).innerHTML = cart['pr' + a][0];
+        updateCart(cart);
+    });
+
+
+// <!-- start js for nv fashion slideshow -->
+    var slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+      var i;
+      var slides = document.getElementsByClassName("mySlides");
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      slideIndex++;
+      if (slideIndex > slides.length) {slideIndex = 1}
+      slides[slideIndex-1].style.display = "block";
+      setTimeout(showSlides, 3000); // Change image every 3 seconds
+    }
+// <!-- end js here -->
+
+
+</script>
+{% endblock %}
